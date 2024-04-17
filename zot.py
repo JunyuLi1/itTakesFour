@@ -1,9 +1,7 @@
-import streamlit as st
+#start here
 
 
-def main():
-    st.title('Streamlit 示例应用')
 
 
 if __name__ == "__main__":
-    main()
+    print(1)
