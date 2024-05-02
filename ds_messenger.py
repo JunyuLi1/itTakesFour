@@ -163,3 +163,7 @@ class DirectMessenger:
                 return False
             else:
                 self.token = mes_obj.extract_json(join_message).token
+
+if __name__ == '__main__':
+    contactobj = DirectMessenger('168.235.86.101','VC1', 'VC')
+    print(contactobj.send('shabidawei','dawei'))

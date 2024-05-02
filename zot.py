@@ -1,7 +1,10 @@
 import streamlit as st
 import ds_client
+import ds_messenger
 
 st.session_state.messages = []
+st.session_state.friends = {}
+contactobj = ds_messenger.DirectMessenger('168.235.86.101','VC1', 'VC')
 
 
 def main():
@@ -14,12 +17,15 @@ def main():
     create_friendlist()
 
 
+
+
 def create_friendlist():
     st.sidebar.title("Friend Lists")
     friend_names = list(st.session_state.chat_logs.keys())
     friend = st.sidebar.radio("", friend_names)
     display_chat_log(friend)
     message_input(friend)
+    add_new_contact()
 
 def display_chat_log(friend):
     st.write(f"Chat history with {friend}:")
@@ -32,7 +38,21 @@ def message_input(target_name):
         if st.button("Send", key="send"):
             if message_input:
                 st.session_state.chat_logs[target_name].append(message_input)
-                ds_client.send('168.235.86.101', 3021, 'VC1', 'VC', message=message_input)
+                print(contactobj.send(message_input,target_name))
+
+def add_new_contact():
+    with st.sidebar:
+        new_contact = st.text_input("Add new contact name", key="new_contact")
+        if st.button("Add Contact"):
+            if new_contact:
+                if new_contact not in st.session_state.friends:
+                    st.session_state.friends[new_contact] = []
+                    temp = []
+                    temp.append(new_contact)
+                    new_contact = temp
+                    st.sidebar.radio("", new_contact)
+                else:
+                    st.sidebar.error("Contact already exists.")
 
 
 
