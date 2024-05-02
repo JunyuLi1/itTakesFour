@@ -1,5 +1,6 @@
 import streamlit as st
 import ds_messenger
+import time
 
 contactobj = ds_messenger.DirectMessenger('168.235.86.101','VC1', 'VC')
 
@@ -9,7 +10,7 @@ def main():
         st.session_state.chat_logs = {
             "Alan": ["How's your pj2?", "sounds good", "bye"],
             "Frank": ["Hello World", "Nice to meet you"],
-            "SuperHammer": ["Test1", "Test2"]
+            "SuperHammerD": ["Test1", "Test2"]
         }
     create_friendlist()
 
@@ -25,10 +26,12 @@ def display_chat_log(friend):
     st.write(f"Chat history with {friend}:")
     for message in st.session_state.chat_logs[friend]:
         st.text(message)
-    result = contactobj.retrieve_new()
+    result = contactobj.retrieve_all()
     for item in result:
-        st.text(item.message)
-        st.session_state.chat_logs[friend].append(item.message)
+        if str(friend) == str(item.recipient):
+            st.text(item.message)
+            st.session_state.chat_logs[friend].append(item.message)
+    get_new_message(friend)
     
     
 
@@ -56,6 +59,12 @@ def add_new_contact():
                     st.sidebar.error("Contact already exists.")
 
 
+def get_new_message(friend):
+    result2 = contactobj.retrieve_new()
+    for item in result2:
+        if str(friend) == str(item.recipient):
+            st.text(item.message)
+            st.session_state.chat_logs[friend].append(item.message)
 
 
 if __name__ == "__main__":
