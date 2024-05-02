@@ -1,9 +1,6 @@
 import streamlit as st
-import ds_client
 import ds_messenger
 
-st.session_state.messages = []
-st.session_state.friends = {}
 contactobj = ds_messenger.DirectMessenger('168.235.86.101','VC1', 'VC')
 
 
@@ -12,12 +9,9 @@ def main():
         st.session_state.chat_logs = {
             "Alan": ["How's your pj2?", "sounds good", "bye"],
             "Frank": ["Hello World", "Nice to meet you"],
-            "Shelly": ["Test1", "Test2"]
+            "SuperHammer": ["Test1", "Test2"]
         }
     create_friendlist()
-
-
-
 
 def create_friendlist():
     st.sidebar.title("Friend Lists")
@@ -31,6 +25,12 @@ def display_chat_log(friend):
     st.write(f"Chat history with {friend}:")
     for message in st.session_state.chat_logs[friend]:
         st.text(message)
+    result = contactobj.retrieve_new()
+    for item in result:
+        st.text(item.message)
+        st.session_state.chat_logs[friend].append(item.message)
+    
+    
 
 def message_input(target_name):
     with st.container():
@@ -38,15 +38,16 @@ def message_input(target_name):
         if st.button("Send", key="send"):
             if message_input:
                 st.session_state.chat_logs[target_name].append(message_input)
-                print(contactobj.send(message_input,target_name))
+                contactobj.send(message_input, target_name)
+                st.experimental_rerun()
 
 def add_new_contact():
     with st.sidebar:
         new_contact = st.text_input("Add new contact name", key="new_contact")
         if st.button("Add Contact"):
             if new_contact:
-                if new_contact not in st.session_state.friends:
-                    st.session_state.friends[new_contact] = []
+                if new_contact not in st.session_state.chat_logs:
+                    st.session_state.chat_logs[new_contact] = []
                     temp = []
                     temp.append(new_contact)
                     new_contact = temp

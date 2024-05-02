@@ -167,3 +167,5 @@ class DirectMessenger:
 if __name__ == '__main__':
     contactobj = DirectMessenger('168.235.86.101','VC1', 'VC')
     print(contactobj.send('shabidawei','dawei'))
+    for item in contactobj.retrieve_all():
+        print(item.recipient)
