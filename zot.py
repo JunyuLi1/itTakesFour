@@ -9,7 +9,7 @@ def main():
     if 'chat_logs' not in st.session_state:
         st.session_state.chat_logs = {
             "Alan": ["How's your pj2?", "sounds good", "bye"],
-            "Frank": ["Hello World", "Nice to meet you"],
+            "SuperHammerA": ["Hello World", "Nice to meet you"],
             "SuperHammerD": ["Test1", "Test2"]
         }
     create_friendlist()
@@ -21,6 +21,9 @@ def create_friendlist():
     display_chat_log(friend)
     message_input(friend)
     add_new_contact()
+    while True:
+        get_new_message(friend)
+        time.sleep(3)
 
 def display_chat_log(friend):
     st.write(f"Chat history with {friend}:")
@@ -31,7 +34,6 @@ def display_chat_log(friend):
         if str(friend) == str(item.recipient):
             st.text(item.message)
             st.session_state.chat_logs[friend].append(item.message)
-    get_new_message(friend)
     
     
 
