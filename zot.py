@@ -8,7 +8,7 @@ contactobj = ds_messenger.DirectMessenger('168.235.86.101','SuperHammerD', '1234
 def main():
     if 'chat_logs' not in st.session_state:
         st.session_state.chat_logs = {
-            "Alan": ["How's your pj2?", "sounds good", "bye"],
+            "VC1": ["How's your pj2?", "sounds good", "bye"],
             "SuperHammerA": ["Hello World", "Nice to meet you"],
             "SuperHammerD": ["Test1", "Test2"]
         }
