@@ -1,5 +1,7 @@
 import streamlit as st
 import ds_messenger
+from message_style import Message
+from streamlit_autorefresh import st_autorefresh
 import time
 
 contactobj = ds_messenger.DirectMessenger('168.235.86.101','SuperHammerD', '12345')
@@ -8,9 +10,9 @@ contactobj = ds_messenger.DirectMessenger('168.235.86.101','SuperHammerD', '1234
 def main():
     if 'chat_logs' not in st.session_state:
         st.session_state.chat_logs = {
-            "VC1": ["How's your pj2?", "sounds good", "bye"],
-            "SuperHammerA": ["Hello World", "Nice to meet you"],
-            "SuperHammerD": ["Test1", "Test2"]
+            "VC1": [Message("How's your pj2?", 1), Message("sounds good", 2), Message("bye", 3)],
+            "SuperHammerA": [Message("Hello World", 1), Message("Nice to meet you", 2)],
+            "SuperHammerD": [Message("Test1", 1), Message("Test2", 2)]
         }
     create_friendlist()
 
@@ -21,30 +23,35 @@ def create_friendlist():
     display_chat_log(friend)
     message_input(friend)
     add_new_contact()
-    while True:
-        get_new_message(friend)
-        time.sleep(3)
 
 def display_chat_log(friend):
     st.write(f"Chat history with {friend}:")
+    display_log = st.empty()
     for message in st.session_state.chat_logs[friend]:
-        st.text(message)
+        st.text(message.get_message())
     result = contactobj.retrieve_all()
     for item in result:
         if str(friend) == str(item.recipient):
-            st.text(item.message)
-            st.session_state.chat_logs[friend].append(item.message)
-    
+            temp_mes = Message(item.message, item.timestamp)
+            if (temp_mes in st.session_state.chat_logs[friend]):
+                pass
+            else:
+                st.text(temp_mes.message)
+                st.session_state.chat_logs[friend].append(temp_mes)
+    #display_log.text("\n".join(st.session_state.chat_logs[friend]))
+        
     
 
 def message_input(target_name):
     with st.container():
         message_input = st.text_input("Type your message here...", key="message_input")
+        message_time = time.time()
         if st.button("Send", key="send"):
             if message_input:
-                st.session_state.chat_logs[target_name].append(message_input)
+                message_to_send = Message(message_input, message_time)
+                st.session_state.chat_logs[target_name].append(message_to_send)
                 contactobj.send(message_input, target_name)
-                st.experimental_rerun()
+                st.rerun()
 
 def add_new_contact():
     with st.sidebar:
@@ -63,10 +70,18 @@ def add_new_contact():
 
 def get_new_message(friend):
     result2 = contactobj.retrieve_new()
-    for item in result2:
-        if str(friend) == str(item.recipient):
-            st.text(item.message)
-            st.session_state.chat_logs[friend].append(item.message)
+    if result2 != None:
+        for item in result2:
+            if str(friend) == str(item.recipient):
+                temp_mes = Message(item.message, item.timestamp)
+                if (temp_mes in st.session_state.chat_logs[friend]):
+                    pass
+                else:
+                    st.text(temp_mes.message)
+                    st.session_state.chat_logs[friend].append(temp_mes)
+        return True
+    else:
+        return False
 
 
 if __name__ == "__main__":
