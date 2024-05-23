@@ -2,12 +2,13 @@ import streamlit as st
 import ds_messenger
 from message_style import Message
 import time
+from streamlit_autorefresh import st_autorefresh
 
-contactobj = ds_messenger.DirectMessenger('168.235.86.101','VC1', 'VC')
 #{'something': {'SuperHammerA': [<message_style.Message object at 0x000002223E785910>]}}
 class Chat():
     def __init__(self, ip, ucername, password):
         self.contactobj = ds_messenger.DirectMessenger(ip,ucername, password)
+        self.friend = None
     def main(self):
         if 'chat_logs' not in st.session_state:
             st.session_state.chat_logs = {
@@ -22,6 +23,7 @@ class Chat():
         st.sidebar.title("Friend Lists")
         friend_names = list(st.session_state.chat_logs.keys())
         friend = st.sidebar.radio("", friend_names)
+        self.friend = friend
         if type(st.session_state.chat_logs[friend]) is list:
             self.display_chat_log(friend)
             self.message_input(friend)
@@ -119,22 +121,33 @@ class Chat():
                     st.error("Please select at least two to create a group chat.")
 
 
-    def get_new_message(self, friend):
-        result2 = self.contactobj.retrieve_new()
-        if result2 != None:
-            for item in result2:
-                if str(friend) == str(item.recipient):
-                    temp_mes = Message(item.message, item.timestamp)
-                    if (temp_mes in st.session_state.chat_logs[friend]):
-                        pass
-                    else:
-                        st.text(temp_mes.message)
-                        st.session_state.chat_logs[friend].append(temp_mes)
-            return True
-        else:
-            return False
+    # def get_new_message(self, friend):
+    #     result2 = self.contactobj.retrieve_new()
+    #     print(result2)
+    #     if len(result2) == 0:
+    #         print("1234")
+    #     if len(result2) != 0:
+    #         for item in result2:
+    #             if str(friend) == str(item.recipient):
+    #                 temp_mes = Message(item.message, item.timestamp)
+    #                 if (temp_mes in st.session_state.chat_logs[friend]):
+    #                     pass
+    #                 else:
+    #                     st.text(temp_mes.message)
+    #                     st.session_state.chat_logs[friend].append(temp_mes)
+    #         return True
+    #     else:
+    #         return False
+        
+    # def auto_refresh(self):
+    #     if self.get_new_message(self.friend):
+    #         st.rerun()
+    #     else:
+    #         pass
 
 
 if __name__ == "__main__":
-    chat = Chat('168.235.86.101','VC1', 'VC')
+    chat = Chat('168.235.86.101','SuperHammerD', '12345')
     chat.main()
+    count = st_autorefresh(interval=5000, limit=100, key="data_refresh")
+    #chat.auto_refresh()
