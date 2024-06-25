@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('homepage.html', user=user)
+    return render_template('homepage.html')
 
 @app.route('/chat')
 def chat():
-    return "chat"
+    return render_template('chat.html')
 
 if __name__ == '__main__':
     user = User('168.235.86.101','VC1', 'VC')
