@@ -1,6 +1,6 @@
 import streamlit as st
 import ds_messenger
-from message_style import Message
+from chat.message_style import Message
 import time
 
 contactobj = ds_messenger.DirectMessenger('168.235.86.101','VC1', 'VC')

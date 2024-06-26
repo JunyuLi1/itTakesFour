@@ -2,102 +2,33 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-lg-3 dashboard-left-border">
-          <div class="dashboard-left">
-            <ul class="dashboard-menu">
-              <h1><header>Contacts</header></h1>
-                <li>
-                  <i class="fa fa-user"></i>
-                  something
-                </li>
-                <li class="active"><a href=""><i class="fa fa-file"></i>Candidates Resume</a></li>
-                <li><a href="post_job.html"><i class="fa fa-envelope"></i>Post Job</a></li>
-                <li><a href="manage_job.html"><i class="fa fa-bell"></i>Manage Job</a></li>
-                <li><a href="company_change_password.html"><i class="fa fa-bell"></i>Change passoword</a></li>
-                <li><a href="#"><i class="fa fa-power-off"></i>LogOut</a></li>
-            </ul>
-          </div>
+  <div class="left-side">
+      <h2>All Contacts</h2>
+      <form action="#">
+        <ul>
+          <input type="radio" name="chat_friend" value="Frank"> Frank
+          <br>
+          <input type="radio" name="chat_friend" value="sbHammer"> sbHammer
+          <br>
+          <input type="radio" name="chat_friend" value="No mercy"> No mercy
+          <p>----</p>
+          {% for contact in contacts %}
+              <input type="radio" name="chat_friend" value="{{ contact }}">{{ contact }}
+              <br>
+          {% endfor %}
+        </ul>
+      </form>
+  </div>
+  <div class="right-side">
+      <h2>Chat History</h2>
+      <div class="messages">
+        user.username
       </div>
-      <div class="col-md-8 col-lg-9">
-          <div class="dashboard-right">
-            <div class="dashboard-title">
-                <div class="row">
-                  <div class="col-md-9">
-                      <div class="profile_title">
-                        <h3>Candidates Resume</h3>
-                      </div>
-                  </div>
-                </div>
-                <hr>
-                <!--strat profile row-->
-                <div class="table_design table-responsive">
-                  <table class="table table-striped table-hover">
-                      <thead>
-                        <tr>
-                            <th scope="col">Sl</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody class="table_design_action">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Alexanger</td>
-                            <td>web designer</td>
-                            <td><a href="view_candidates_resume.html"><i class="fa fa-eye"></i></a> <span><a href="#" target="_blank"><i class="fa fa-download"></i></a></span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>web designer</td>
-                            <td><a href="view_candidates_resume.html"><i class="fa fa-eye"></i></a> <span><a href="#" target="_blank"><i class="fa fa-download"></i></a></span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>Html Designer</td>
-                            <td><a href="view_candidates_resume.html"><i class="fa fa-eye"></i></a> <span><a href="#" target="_blank"><i class="fa fa-download"></i></a></span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>Html Designer</td>
-                            <td><a href="view_candidates_resume.html"><i class="fa fa-eye"></i></a> <span><a href="#" target="_blank"><i class="fa fa-download"></i></a></span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>Html Designer</td>
-                            <td><a href="view_candidates_resume.html"><i class="fa fa-eye"></i></a> <span><a href="#" target="_blank"><i class="fa fa-download"></i></a></span></td>
-                        </tr>
-                      </tbody>
-                  </table>
-                </div>
-                <!-- Start pagination -->
-                <div class="paginate_area">
-                  <div class="row">
-                      <div class="col-md-6">
-                        <div class="pagination-box-row">
-                            <p>Page 1 of 5</p>
-                            <ul class="pagination">
-                              <li class="active"><a href="#">1</a></li>
-                              <li><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li>...</li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                            </ul>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-                <!-- end pagination -->
-            </div>
-          </div>
+      <div class="send-click">
+        <input type="text" placeholder="Please type message here">
+        <button type="submit">Send</button>
       </div>
-    </div>
+  </div>
 </div>
 {% endblock %}
 

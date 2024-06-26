@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 from chat import ds_messenger
-from message_style import Message
+from chat.message_style import Message
 import time
 
 
