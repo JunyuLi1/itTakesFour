@@ -4,17 +4,14 @@
 <div class="container">
   <div class="left-side">
       <h2>All Contacts</h2>
-      <form action="#">
+      <form id="contactForm" action="/chat" method="post">
         <ul>
-          <input type="radio" name="chat_friend" value="Frank"> Frank
-          <br>
-          <input type="radio" name="chat_friend" value="sbHammer"> sbHammer
-          <br>
-          <input type="radio" name="chat_friend" value="No mercy"> No mercy
+          <li><input type="radio" name="chat_friend" value="Frank" onclick="submitForm()"> Frank</li>
+          <li><input type="radio" name="chat_friend" value="sbHammer" onclick="submitForm()"> sbHammer</li>
+          <li><input type="radio" name="chat_friend" value="No mercy" onclick="submitForm()"> No mercy</li>
           <p>----</p>
           {% for contact in contacts %}
-              <input type="radio" name="chat_friend" value="{{ contact }}">{{ contact }}
-              <br>
+            <li><input type="radio" name="chat_friend" value="{{ contact }}" onclick="submitForm()">{{ contact }}</li>
           {% endfor %}
         </ul>
       </form>
@@ -22,13 +19,27 @@
   <div class="right-side">
       <h2>Chat History</h2>
       <div class="messages">
-        user.username
+        <ul>
+          {% for content in history %}
+            {{ content }}
+            <br>
+          {% endfor %}
+        </ul>
       </div>
       <div class="send-click">
-        <input type="text" placeholder="Please type message here">
-        <button type="submit">Send</button>
+        <form action="/chat" method="post">
+          <input type="text" name='send_message' placeholder="Please type message here">
+          <button type="submit">Send</button>
+        </form>
       </div>
   </div>
 </div>
+
+<script>
+  function submitForm() {
+    document.getElementById("contactForm").submit();
+  }
+</script>
+
 {% endblock %}
 
