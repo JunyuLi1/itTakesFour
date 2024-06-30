@@ -19,12 +19,11 @@ def chat():
         else:
             contacts[item.recipient].append(item.message)
     if request.method == 'POST':
-        #message_input = request.form['send_message']
         print(request.form)
-        #勾选问题或发送和选择问题
         person = request.form['chat_friend']
         if 'send_message' in request.form:
             message_input = request.form['send_message']
+            user.contactobj.send(message_input,person)
         if person not in contacts.keys():
             contacts[person] = []
         return render_template('chat.html', contacts=contacts.keys(), history=contacts[person],selected_radio=person)
@@ -33,4 +32,5 @@ def chat():
 
 if __name__ == '__main__':
     user = User('168.235.86.101','VC1', 'VC') #config user, could change later
+    #user = User('168.235.86.101','sbHammer', 'sbHammer') #config user, could change later
     app.run(debug=True)

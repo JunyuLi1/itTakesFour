@@ -27,27 +27,15 @@
         </ul>
       </div>
       <div class="send-click">
-        <form id="messageForm" action="/chat" method="post">
+        <form id="messageForm" action="/chat" method="post" onsubmit="return checkEmpty()">
           <input type="hidden" name="chat_friend" id="chat_friend_input" value="{{ selected_radio }}">
-          <input type="text" name='send_message' placeholder="Please type message here" required>
+          <input type="text" id="message_input" name='send_message' placeholder="Please type message here" required>
           <button type="submit">Send</button>
         </form>
       </div>
   </div>
 </div>
 
-<script>
-  function submitForm() {
-    const form = document.getElementById("contactForm");
-    form.submit();
-  }
 
-  // Set the value of the hidden input in the message form to the selected contact
-  document.querySelectorAll('input[name="chat_friend"]').forEach((element) => {
-    element.addEventListener('click', function() {
-      document.getElementById('chat_friend_input').value = this.value;
-    });
-  });
-</script>
 
 {% endblock %}
