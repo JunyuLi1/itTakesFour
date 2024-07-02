@@ -10,6 +10,10 @@ def home():
 
 @app.route('/chat',methods=['GET','POST'])
 def chat():
+    #TODO: retrieve new or all
+    #TODO: creating new contacts
+    #TODO: auto refresh for receving new_message
+    #TODO: display all message according time,split in two different parts
     result = user.contactobj.retrieve_all()
     contacts = {}
     for item in result:

@@ -18,3 +18,16 @@ function checkEmpty() {
     }
     return true;
 }
+
+function promptForContact(type) {
+    var newContact = prompt('Please Enter a new contact');
+    if (newContact == '' || newContact == null) {
+        alert('Invalid input');
+        return false;
+    }
+    creatingNewContact(newContact, type);
+}
+
+function creatingNewContact(newContact, type) {
+    newContact.submit();
+}
