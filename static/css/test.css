@@ -1,0 +1,25 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.2);
+    background-color: #fff;
+    backdrop-filter: blur();
+    height: 80px;
+}
+
+.logo{
+    height: 80px;
+    align-items: baseline;
+}
+
+.nav a{
+    color:white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.right-navigation-bar{
+    color: #fff;
+}

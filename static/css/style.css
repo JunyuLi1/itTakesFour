@@ -525,8 +525,8 @@ li {
 }
 
 .btntoTop {
-	background-color: #8CC440;
-	border: 2px solid #8CC440;
+	background-color: #f0d403;
+	border: 2px solid #f0d403;
 	border-radius: 50%;
 	bottom: 30px;
 	cursor: pointer;
@@ -552,7 +552,7 @@ li {
 }
 
 .btntoTop.active:hover {
-	background: #8CC440 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	border: 2px solid #fff;
 	opacity: 0.8;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
