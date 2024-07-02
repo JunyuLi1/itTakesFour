@@ -568,7 +568,7 @@ li {
 ==================================================*/
 
 .jobmaster-header-area {
-	padding: 15px 0;
+	padding: 10px 0;
 }
 
 .forsticky {
@@ -806,12 +806,12 @@ header,
 .post-jobs {
 	display: block;
 	padding: 10px 30px !important;
-	background: #8CC440 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	border-radius: 40px;
 }
 
 .post-jobs:hover {
-	background: #7aab37 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 }
 
 
@@ -1972,20 +1972,25 @@ ul.instagram {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	color:#fff;
+	color:#f0d403;
 
+}
+
+.footer-container{
+	display: flex;
+  	justify-content: space-between;
 }
 
 .single-footer {
 	margin-bottom: 0px;
 }
 .single-footer h3{
-	border-bottom: 1px solid #8CC440;
+	border-bottom: 1px solid #f0d403;
 	display: inline-block;
 }
 
 .single-footer h2 {
-	color: #8CC440;
+	color: #f0d403;
 	display: inline-block;
 	font-size: 30px;
 	font-weight: 600;
@@ -1996,7 +2001,7 @@ ul.instagram {
 }
 
 .single-footer h2 span {
-	color: #fff;
+	color: #f0d403;
 	margin-left: 5px;
 }
 .single-footer p{
@@ -2016,7 +2021,7 @@ ul.instagram {
 }
 
 .footer-social>li>a {
-	border: 1px solid #8CC440;
+	border: 1px solid #f0d403;
 	border-radius: 50%;
 	color: #fff;
 	display: block;
@@ -2030,27 +2035,27 @@ ul.instagram {
 }
 
 .fb:hover {
-	background: #4b6ea9 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	color: #fff;
-	border: 1px solid #8CC440;
+	border: 1px solid #f0d403;
 }
 
 .twitter:hover {
-	background: #65bbf2 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	color: #fff;
-	border: 1px solid #8CC440;
+	border: 1px solid #f0d403;
 }
 
 .gp:hover {
-	background: #bd081c none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	color: #fff;
-	border: 1px solid #8CC440;
+	border: 1px solid #f0d403;
 }
 
 .linkedin:hover {
-	background: #0075b5 none repeat scroll 0 0;
+	background: #f0d403 none repeat scroll 0 0;
 	color: #fff;
-	border: 1px solid #8CC440;
+	border: 1px solid #f0d403;
 }
 
 .single-footer>h3,
@@ -2551,9 +2556,9 @@ ul.instagram {
 	color: #F0542D;
 }
 
-.post-share .col-md-6:first-child {
+/* .post-share .col-md-6:first-child {
 	padding-left: 0;
-}
+} */
 
 .jobmaster-comment-list {
 	margin-top: 50px;
