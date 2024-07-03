@@ -34,6 +34,7 @@ def chat():
     else:
         return render_template('chat.html', contacts=contacts.keys())
 
+
 if __name__ == '__main__':
     user = User('168.235.86.101','VC1', 'VC') #config user, could change later
     #user = User('168.235.86.101','sbHammer', 'sbHammer') #config user, could change later
