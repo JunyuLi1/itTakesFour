@@ -6,6 +6,7 @@ header{
     background-color: #fff;
     backdrop-filter: blur();
     height: 80px;
+    /* position: fixed; */
 }
 
 .logo_part a img{
