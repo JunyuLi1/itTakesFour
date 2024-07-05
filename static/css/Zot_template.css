@@ -6,10 +6,11 @@ header{
     background-color: #fff;
     backdrop-filter: blur();
     height: 80px;
-    /* position: fixed;
+    width: 100%;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; */
+    z-index: 1000;
 }
 
 .main_content_container{
@@ -17,7 +18,7 @@ header{
     justify-content: center;
     flex: auto;
     width: 100%;
-    /* padding-top: 70px; */
+    padding-top: 85px;
 }
 
 .logo_part a img{

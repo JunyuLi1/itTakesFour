@@ -56,4 +56,22 @@ button {
     overflow-y: auto;
     margin-bottom: 20px;
     height: 70vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side-chat-history {
+    flex: 1;
+    display: flex;
+    align-content: flex-start;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.right-side-chat-history {
+    display: flex;
+    align-content: flex-end;
+    border: 1px solid #ccc;
+    border-radius: 10px;
 }

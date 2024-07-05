@@ -4,22 +4,26 @@
 <div class="container">
   <div class="left-side">
       <h2>All Contacts</h2>
-      <form id="contactForm" action="/chat" method="post">
+      <form id="contactForm" action="/chat" method="post" class="contact_part">
         <ul>
-          <li><input type="radio" name="chat_friend" value="Frank" onclick="submitForm()"> Frank</li>
-          <li><input type="radio" name="chat_friend" value="sbHammer" onclick="submitForm()"> sbHammer</li>
-          <li><input type="radio" name="chat_friend" value="No mercy" onclick="submitForm()"> No mercy</li>
+          <input type="radio" name="chat_friend" value="Frank" onclick="submitForm()"> Frank
+          <br>
+          <input type="radio" name="chat_friend" value="sbHammer" onclick="submitForm()"> sbHammer
+          <br>
+          <input type="radio" name="chat_friend" value="No mercy" onclick="submitForm()"> No mercy
+          <br>
           <p>----</p>
           {% for contact in contacts %}
-            <li><input type="radio" name="chat_friend" value="{{ contact }}" onclick="submitForm()">{{ contact }}</li>
+            <input type="radio" name="chat_friend" value="{{ contact }}" onclick="submitForm()">{{ contact }}
+            <br>
           {% endfor %}
         </ul>
       </form>
       <br>
-      <form id="createNewChat" action="/chat" method="post" onsubmit="return creatingNewContact()">
+      <!-- <form id="createNewChat" action="/chat" method="post" onsubmit="return creatingNewContact()">
         <button type="submit" onclick="promptForContact('New_Contact')">New Contact</button>
         <button type="submit" onclick="promptForContact('New_Group_Chat')">New Group Chat</button>
-      </form>
+      </form> -->
   </div>
   <div class="right-side">
       <h2>Chat History</h2>
@@ -32,9 +36,9 @@
             {% endfor %}
           </ul>
         </div>
-          <div class="right-side-chat-history">
-            <p> test for user-history</p>
-          </div>
+        <div class="right-side-chat-history">
+          <p> test for user-history 1 2 3 4 5 6 7 8 9 10</p>
+        </div>
       </div>
       <div class="send-click">
         <form id="messageForm" action="/chat" method="post" onsubmit="return checkEmpty()">
