@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
-from chat.message_style import Message
 from config import User
 
 app = Flask(__name__)
+user = None
 
 @app.route('/')
 def home():
@@ -10,10 +10,14 @@ def home():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    #login function, store in global var user
+    global user
     if request.method == 'POST':
-        user = request.form['user']
-        password = request.form['user']
-        
+        name = request.form['username']
+        pwd = request.form['password']
+        user = User('168.235.86.101', name, pwd)
+        #user.load_chat_history()
+        return render_template('Zot_template.html')
     else:
         return render_template('login.html')
 
@@ -23,7 +27,9 @@ def chat():
     #TODO: creating new contacts
     #TODO: auto refresh for receving new_message
     #TODO: display all message according time,split in two different parts
-    # contact parts = {'SuperHammerB': {}}
+    # contact parts = {'SuperHammerB': {'SuperHammerB':[],'user:[]'}}
+    #TODO: Impoertant !!! store message in local (new server if applicable)
+    global user
     result = user.contactobj.retrieve_all()
     contacts = {}
     for item in result:
@@ -46,6 +52,6 @@ def chat():
         return render_template('chat.html', contacts=contacts.keys())
 
 if __name__ == '__main__':
-    user = User('168.235.86.101','VC1', 'VC') #config user, could change later
+    #user = User('168.235.86.101','VC1', 'VC') #config user, could change later
     #user = User('168.235.86.101','sbHammer', 'sbHammer') #config user, could change later
     app.run(debug=True)
