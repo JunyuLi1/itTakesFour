@@ -13,6 +13,7 @@ def login():
     #login function, store in global var user
     global user
     if request.method == 'POST':
+        print(request.form)
         name = request.form['username']
         pwd = request.form['password']
         user = User('168.235.86.101', name, pwd)
