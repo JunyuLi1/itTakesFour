@@ -14,5 +14,3 @@ class Message:
         if not isinstance(other, Message):
             return 
         return (self.message == other.message) and (self.time == other.time)
-    
-    

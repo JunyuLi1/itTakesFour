@@ -1,0 +1,145 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.2);
+    background-color: #fff;
+    backdrop-filter: blur();
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main_content_container{
+    display: flex;
+    justify-content: center;
+    flex: auto;
+    width: 100%;
+    padding-top: 85px;
+}
+
+.logo_part a img{
+    height: 80px;
+    align-content: flex-start;
+}
+
+.nav a{
+    color:#000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 8px 16px;
+    transition: 300ms;
+    border-radius: 99px;
+}
+
+.nav a:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.right-navigation-bar{
+    color: #fff;
+    align-items: flex-end;
+}
+
+.right-navigation-bar a{
+    color:#000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 3px 5px;
+    border-radius: 99px;
+}
+
+.right-navigation-bar a:hover{
+    background-color: rgba(0,0,0,0.2);
+}
+
+.main_content_container{
+    display: flex;
+    height: auto;
+    align-items: center;
+}
+
+.page-footer{
+    background-color: #1a1919;
+    color: #f8f9fa;
+}
+
+.page-footer .top-footer{
+    width: 1140px;
+    padding: 100px 0;
+    display: flex;
+    margin: 0 auto;
+}
+
+.introduction{
+    color: #f0d403;
+    flex-direction: column;
+    flex: auto;
+    justify-content:space-around;
+}
+
+.site-authors{
+    flex:auto;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.copyright-part{
+    text-align: center;
+}
+
+.footer-social {
+	margin-top: 15px;
+    flex:auto;
+    text-align: center;
+}
+
+.footer-social li {
+	display: inline-block;
+	margin: 0px 2px
+}
+
+.footer-social>li>a {
+	border: 1px solid;
+	border-radius: 50%;
+	display: block;
+	font-size: 18px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	-webkit-transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s;
+	width: 40px;
+}
+
+.icon-container {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.icon-container:hover {
+    background-color: #333;
+    box-shadow: 0 0 10px #fff;
+}
+
+.icon-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.icon-container:hover img {
+    transform: scale(1.1);
+}

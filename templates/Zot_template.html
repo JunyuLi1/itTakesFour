@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZotForum</title>
+
+    <link rel="stylesheet" href="..\static/css/Zot_template.css">
+    <link rel="stylesheet" href="..\static/css/chat.css">
+    <link rel="stylesheet" href="..\static/css/login.css">
+
+</head>
+<body>
+    <!--HEADER-->
+    <header>
+        <!--LOGO-->
+        <div class="logo_part">
+            <a href="index.html">
+                <img src="..\static/picture/logo.png" alt="UCI" class="logo">
+            </a>
+        </div>
+        <!--Navi Bar-->
+        <nav class="nav">
+            <a href="\">Home</a>
+            <a href="\chat">Forum</a>
+            <a href="\chat">Inbox</a>
+            <a href="\chat">About Us</a>
+        </nav>
+        <!--CONFIG-->
+        <div class="right-navigation-bar">
+            <ul>
+                <a href="\chat">Settings</a>
+                <a href="\login">Log in</a>
+                <a href="\chat">Create Post</a>
+            </ul>
+        </div>
+    </header>
+    <section class="main_content_container">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <!--FOOTER-->
+    <footer class="page-footer">
+        <div class="top-footer">
+            <div class="introduction">
+                <h1>ZOTFORUM</h1>
+                <p>Happy to see you</p>
+            </div>
+            <div class="site-authors">
+                <h3>Junyu  Li</h3>
+                <p><b>Email</b>  : junyul24@uci.edu</p>
+                <p><b>Phone</b> : 9495929421</p>
+                <ul class="footer-social">
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/instagram.png" alt="Icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/ln.jpg" alt="Icon">
+                        </a>
+                    </li>
+                 </ul>
+            </div>
+            <div class="site-authors">
+                <h3>Frank  Xu</h3>
+                <p><b>Email</b>  : xxxxx@uci.edu</p>
+                <p><b>Phone</b> : 1145141919810</p>
+                <ul class="footer-social">
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/instagram.png" alt="Icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/ln.jpg" alt="Icon">
+                        </a>
+                    </li>
+                 </ul>
+            </div>
+            <div class="site-authors">
+                <h3>Yuxi  Dai</h3>
+                <p><b>Email</b>  : yuxid5@uci.edu</p>
+                <p><b>Phone</b> : woshishabi</p>
+                <ul class="footer-social">
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/instagram.png" alt="Icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/ln.jpg" alt="Icon">
+                        </a>
+                    </li>
+                 </ul>
+            </div>
+            <!-- <div class="site-authors">
+                <h3>Yiwen Wu</h3>
+                <p><b>Email</b>  : junyul24@uci.edu</p>
+                <p><b>Phone</b> : 9495929421</p>
+                <ul class="footer-social">
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/instagram.png" alt="Icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.yourlinkhere.com" target="_blank" class="icon-container">
+                            <img src="..\static/picture/ln.jpg" alt="Icon">
+                        </a>
+                    </li>
+                 </ul>
+            </div> -->
+        </div>
+        <div class="bottom-footer">
+            <div class="copyright-part">
+                <p>Copyright &copy; Junyu Li, Frank Xu, Yuxi Dai</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="..\static/js/chat.js"></script>
+
+</body>
+</html>
