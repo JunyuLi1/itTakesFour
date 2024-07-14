@@ -1,0 +1,22 @@
+{% extends 'Zot_template.html' %}
+
+{% block content %}
+
+<div class="containerLogin">
+    <div class="input_ui">
+        <form id="user_input" action="/login" method="post" class="input_part">
+            <h1>Login with your ZotForum ID</h1>
+            <input type="text" id="username_input" name='username' placeholder="Username:" required>
+            <br>
+            <input type="text" id="password_input" name='password' placeholder="Password:" required>
+            <br>
+            <a href="\forgotpwd">Forgot password?</a>
+            <br>
+            <br>
+            <button type="submit" onclick="submitLoginForm()">Continue</button>
+        </form>
+        <p>Don't have an account? <a href="\signUp" class="signupclick">Sign up here</a></p>
+    </div>
+</div>
+
+{% endblock %}

@@ -6,7 +6,19 @@ header{
     background-color: #fff;
     backdrop-filter: blur();
     height: 80px;
-    /* position: fixed; */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.main_content_container{
+    display: flex;
+    justify-content: center;
+    flex: auto;
+    width: 100%;
+    padding-top: 85px;
 }
 
 .logo_part a img{
@@ -49,6 +61,7 @@ header{
 .main_content_container{
     display: flex;
     height: auto;
+    align-items: center;
 }
 
 .page-footer{
