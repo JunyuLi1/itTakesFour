@@ -8,12 +8,22 @@ app = Flask(__name__)
 def home():
     return render_template('Zot_template.html')
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        user = request.form['user']
+        password = request.form['user']
+        
+    else:
+        return render_template('login.html')
+
 @app.route('/chat',methods=['GET','POST'])
 def chat():
     #TODO: retrieve new or all
     #TODO: creating new contacts
     #TODO: auto refresh for receving new_message
     #TODO: display all message according time,split in two different parts
+    # contact parts = {'SuperHammerB': {}}
     result = user.contactobj.retrieve_all()
     contacts = {}
     for item in result:
@@ -30,6 +40,7 @@ def chat():
             user.contactobj.send(message_input,person)
         if person not in contacts.keys():
             contacts[person] = []
+        print(contacts)
         return render_template('chat.html', contacts=contacts.keys(), history=contacts[person],selected_radio=person)
     else:
         return render_template('chat.html', contacts=contacts.keys())
