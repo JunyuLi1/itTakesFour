@@ -21,7 +21,7 @@ def login():
         if result is not None:
             user = User('168.235.86.101', name, pwd)
             #user.load_chat_history()
-            return render_template('login.html.html', success='Success, redirecting...')
+            return render_template('Zot_template.html')
         else:
             return render_template('login.html', status='No such user!')
     else:
