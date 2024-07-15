@@ -11,6 +11,9 @@
             <input type="text" id="password_input" name='password' placeholder="Password:" required>
             <br>
             <a href="\forgotpwd">Forgot password?</a>
+            {% if status %}
+                <p class="failed_login">{{ status }}</p>
+            {% endif %}
             <br>
             <br>
             <button type="submit" onclick="submitLoginForm()">Continue</button>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from config import User
+from database import *
 
 app = Flask(__name__)
 user = None
@@ -16,9 +17,13 @@ def login():
         print(request.form)
         name = request.form['username']
         pwd = request.form['password']
-        user = User('168.235.86.101', name, pwd)
-        #user.load_chat_history()
-        return render_template('Zot_template.html')
+        result = verify_login_status(name, pwd)
+        if result is not None:
+            user = User('168.235.86.101', name, pwd)
+            #user.load_chat_history()
+            return render_template('login.html.html', success='Success, redirecting...')
+        else:
+            return render_template('login.html', status='No such user!')
     else:
         return render_template('login.html')
 

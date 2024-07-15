@@ -34,3 +34,7 @@
 .signupclick:hover{
     background-color: rgba(0,0,0,0.2);
 }
+
+.failed_login{
+    color: red;
+}
