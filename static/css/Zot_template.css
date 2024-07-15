@@ -12,6 +12,15 @@ header{
     left: 0;
     z-index: 1000;
 }
+body{
+    display: flex;
+    flex-direction: column;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 .main_content_container{
     display: flex;
@@ -19,6 +28,9 @@ header{
     flex: auto;
     width: 100%;
     padding-top: 85px;
+    display: flex;
+    height: auto;
+    align-items: center;
 }
 
 .logo_part a img{
@@ -56,12 +68,6 @@ header{
 
 .right-navigation-bar a:hover{
     background-color: rgba(0,0,0,0.2);
-}
-
-.main_content_container{
-    display: flex;
-    height: auto;
-    align-items: center;
 }
 
 .page-footer{
