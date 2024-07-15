@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="containerLogin">
     <div class="input_ui">
         <form id="user_input" action="/login" method="post" class="input_part">
             <h1>Login with your ZotForum ID</h1>
@@ -12,9 +12,10 @@
             <br>
             <a href="\forgotpwd">Forgot password?</a>
             <br>
-            <button type="submit">Continue</button>
+            <br>
+            <button type="submit" onclick="submitLoginForm()">Continue</button>
         </form>
-        <p>Don't have an account? <a href="\signUp">Sign up here</a></p>
+        <p>Don't have an account? <a href="\signUp" class="signupclick">Sign up here</a></p>
     </div>
 </div>
 
