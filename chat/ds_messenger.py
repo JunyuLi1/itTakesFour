@@ -2,7 +2,6 @@ import socket
 import time
 import json
 from collections import namedtuple
-from pathlib import Path
 DataTuple = namedtuple('DataTuple',
                        ['response', 'type', 'message', 'token', 'messages'])
 
@@ -164,28 +163,7 @@ class DirectMessenger:
                 return False
             else:
                 self.token = mes_obj.extract_json(join_message).token
-    
-    def store_chat_history(self):
-        #check and store history
-        # contact parts = {'SuperHammerB': {'SuperHammerB':[],'user:[]'}}
-        #TODO: Possible feature
-        path = Path(f'./user/{self.username}.dsu')
-        if path.exists():
-            print(f" already exists. Skipping creation.")
-        else:
-            # create dsu file and load history
-            result = self.retrieve_all()
-            chathistory = {}
-            for item in result:
-                if item.recipient not in chathistory:
-                    chathistory[item.recipient] = {item.recipient:[],'user':[]}
-                    chathistory[item.recipient][item.recipient].append(item.message)
-                else:
-                    chathistory[item.recipient][item.recipient].append(item.message)
-            print(chathistory)
-            # with path.open('w') as file:
-            #     file.write(content)
-            # print(f"created and written with content.")
+
 
 if __name__ == '__main__':
     contactobj = DirectMessenger('168.235.86.101','VC1', 'VC')

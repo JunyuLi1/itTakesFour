@@ -7,7 +7,7 @@ user = None
 
 @app.route('/')
 def home():
-    return render_template('Zot_template.html')
+    return render_template('home.html', status='login')
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -21,7 +21,7 @@ def login():
         if result is not None:
             user = User('168.235.86.101', name, pwd)
             #user.load_chat_history()
-            return render_template('Zot_template.html')
+            return render_template('home.html', status='logout')
         else:
             return render_template('login.html', status='No such user!')
     else:

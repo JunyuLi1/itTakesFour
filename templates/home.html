@@ -1,0 +1,15 @@
+{% extends 'Zot_template.html' %}
+
+{% block login_off_bar %}
+    {% if status == 'login' %}
+        <a href="\login">Log in</a>
+    {% endif %}
+    {% if status == 'logout' %}
+        <a href="\">Log Out</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<p>This is homepage</p>
+
+{% endblock %}

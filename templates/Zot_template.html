@@ -30,7 +30,8 @@
         <div class="right-navigation-bar">
             <ul>
                 <a href="\chat">Settings</a>
-                <a href="\login">Log in</a>
+                {% block login_off_bar %}
+                {% endblock %}
                 <a href="\chat">Create Post</a>
             </ul>
         </div>
