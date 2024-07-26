@@ -12,18 +12,25 @@ def verify_login_status(username, password):
     except Exception as error:
         return str(error)
 
-def get_chat_history(username, friendname):
+def get_chat_history(username, friendname, offset=0):
     try:
         with sqlite3.connect('./user/userdata.db') as data_connect:
             #data_connect.execute("PRAGMA foreign_keys = ON;")
-            #怎么样同时加载用户发的和收到的？
-            impl_format = f'''SELECT content, time FROM {username} WHERE sender = ?;'''
-            all_chat_his  = data_connect.execute(impl_format, (friendname, ))
-            while True:
-                chat_his = all_chat_his.fetchone()
-                if chat_his is None:
-                    break
-                yield chat_his #('testSendFromF', '2')
+            impl_format = f"""SELECT 'receive' AS message_type, sender, time, content
+                            FROM {username}_receive
+                            WHERE sender = ?
+
+                            UNION ALL
+
+                            SELECT 'send' AS message_type, receiver, time, content
+                            FROM {username}_send
+                            WHERE receiver = ?
+
+                            ORDER BY time ASC
+                            LIMIT 20 OFFSET {offset};"""
+
+            all_chat_his  = data_connect.execute(impl_format, (friendname, friendname))
+            return all_chat_his.fetchall() #('testSendFromF', '2')
     except Exception as error:
         return str(error)
 
@@ -31,16 +38,42 @@ def store_chat_history(chat_type, username, friendname, time, content):
     try:
         with sqlite3.connect('./user/userdata.db') as data_connect:
             #data_connect.execute("PRAGMA foreign_keys = ON;")
-            if chat_type == 'new_info':
-                command = f'''INSERT INTO {username} (sender, receiver, time, content) VALUES (?, ?, ?, ?);'''
-                data_connect.execute(command, (friendname, username, time, content))
+            if chat_type == 'receive':
+                command = f'''INSERT INTO {username}_receive (sender, time, content) VALUES (?, ?, ?);'''
+                data_connect.execute(command, (friendname, time, content))
+            if chat_type == 'send':
+                command = f'''INSERT INTO {username}_send (receiver, time, content) VALUES (?, ?, ?);'''
+                data_connect.execute(command, (friendname, time, content))
             else:
-                command = f'''INSERT INTO {username} (sender, receiver, time, content) VALUES (?, ?, ?, ?);'''
-                data_connect.execute(command, (username, friendname, time, content))
-            
+                raise Exception('chat_type is not defined')
     except Exception as error:
         return str(error)
 
+def check_stored_aval(username):
+    try:
+        with sqlite3.connect('./user/userdata.db') as data_connect:
+            #data_connect.execute("PRAGMA foreign_keys = ON;")
+            query = "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
+            if username == 'receive':#修改
+                return True
+            else:
+                return False
+    except Exception as error:
+        return str(error)
+
+def get_contacts(username):
+    try:
+        with sqlite3.connect('./user/userdata.db') as data_connect:
+            impl_format = '''SELECT contacts FROM user_reg WHERE username = ?;'''
+            user_id  = data_connect.execute(impl_format, (username,))
+            result = user_id.fetchone()[0]
+            return result
+    except Exception as error:
+        return str(error)
+
+
 if __name__ == '__main__':
     #print(verify_login_status('VC', 'VC'))
-    print(next(get_chat_history('VC1', 'Frank')))
+    #store_chat_history('receive','VC1', 'Frank',time.time(), 'testSend')
+    #print(get_contacts('VC1'), type(get_contacts('VC1')))
+    print(get_chat_history('VC1', 'Frank', 0))
