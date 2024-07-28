@@ -26,8 +26,8 @@ def get_chat_history(username, friendname, offset=0):
                             FROM {username}_send
                             WHERE receiver = ?
 
-                            ORDER BY time ASC
-                            LIMIT 20 OFFSET {offset};"""
+                            ORDER BY time DESC
+                            LIMIT 50 OFFSET {offset};"""
 
             all_chat_his  = data_connect.execute(impl_format, (friendname, friendname))
             return all_chat_his.fetchall() #('testSendFromF', '2')

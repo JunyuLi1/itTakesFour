@@ -16,6 +16,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.left-side h2{
+    text-align: center;
+}
+
 .right-side {
     flex: 1; /* 使用 flex 属性让右侧部分填充剩余空间 */
     display: flex;
@@ -57,21 +61,29 @@ button {
     margin-bottom: 20px;
     height: 70vh;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
 }
 
-.left-side-chat-history {
-    flex: 1;
-    display: flex;
-    align-content: flex-start;
-    margin-right: 10px;
-    border: 1px solid #ccc;
+.message {
+    max-width: 20%;
+    margin: 1px;
+    padding: 10px;
     border-radius: 10px;
+    word-wrap: break-word;
 }
 
-.right-side-chat-history {
-    display: flex;
-    align-content: flex-end;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+.message.receive {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+}
+
+.message.send {
+    align-self: flex-end;
+    background-color: #a0c4ff;
+}
+
+.text {
+    font-size: 1em;
+    margin: 0; /* 消除默认的段落外边距 */
 }

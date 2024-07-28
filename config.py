@@ -23,7 +23,7 @@ class User():
     def store_send_history(self, contact, message):
         store_chat_history('send',self.username,contact,time.time(),message)
 
-    def load_contact_history(self, contact):#群聊
+    def load_contact_history(self, contact):#群聊,以及加载更多页面
         return get_chat_history(self.username, contact, 0)
 
     def get_all_contacts(self):

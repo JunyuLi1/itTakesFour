@@ -20,7 +20,6 @@ def login():
         result = verify_login_status(name, pwd)
         if result is not None:
             user = User('168.235.86.101', name, pwd)
-            #user.load_chat_history()
             return render_template('home.html', status='logout')
         else:
             return render_template('login.html', status='No such user!')
@@ -29,10 +28,7 @@ def login():
 
 @app.route('/chat',methods=['GET','POST'])
 def chat():
-    #TODO: creating new contacts
-    #TODO: auto refresh for receving new_message
-    #TODO: display all message according time,split in two different parts
-    #TODO: 如果是新用户直接注册的时候创建并retrieve all
+    #TODO: 自动刷新获取最新消息
     global user
     if user is None:
         return render_template('login.html')
