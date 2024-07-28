@@ -49,17 +49,6 @@ def store_chat_history(chat_type, username, friendname, time, content):
     except Exception as error:
         return str(error)
 
-def check_stored_aval(username):
-    try:
-        with sqlite3.connect('./user/userdata.db') as data_connect:
-            #data_connect.execute("PRAGMA foreign_keys = ON;")
-            query = "SELECT name FROM sqlite_master WHERE type='table' AND name=?"
-            if username == 'receive':#修改
-                return True
-            else:
-                return False
-    except Exception as error:
-        return str(error)
 
 def get_contacts(username):
     try:
@@ -71,9 +60,18 @@ def get_contacts(username):
     except Exception as error:
         return str(error)
 
+def update_new_contacts(contacts, username):
+    try:
+        with sqlite3.connect('./user/userdata.db') as data_connect:
+            cursor = data_connect.cursor()
+            impl_format = "UPDATE user_reg SET contacts = ? WHERE username = ?;"
+            cursor.execute(impl_format, (contacts, username))
+            data_connect.commit()
+    except Exception as error:
+        return str(error)
+
 
 if __name__ == '__main__':
     #print(verify_login_status('VC', 'VC'))
     #store_chat_history('receive','VC1', 'Frank',time.time(), 'testSend')
-    #print(get_contacts('VC1'), type(get_contacts('VC1')))
-    print(get_chat_history('VC1', 'Frank', 0))
+    print(get_contacts('VC1'), type(get_contacts('VC1')))

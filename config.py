@@ -29,6 +29,10 @@ class User():
     def get_all_contacts(self):
         return json.loads(get_contacts(self.username))
 
+    def add_new_contact(self, new_contact):
+        new_contact = json.dumps(new_contact)
+        update_new_contacts(new_contact, self.username)
+
 
 if __name__ == '__main__':
     user = User('168.235.86.101','VC1', 'VC')

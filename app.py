@@ -29,26 +29,22 @@ def login():
 
 @app.route('/chat',methods=['GET','POST'])
 def chat():
-    #TODO: retrieve new or all
     #TODO: creating new contacts
     #TODO: auto refresh for receving new_message
     #TODO: display all message according time,split in two different parts
-    # contact parts = {'SuperHammerB': {'SuperHammerB':[],'user:[]'}}
-    #TODO: Impoertant !!! store message in local (new server if applicable)
+    #TODO: 如果是新用户直接注册的时候创建并retrieve all
     global user
     if user is None:
         return render_template('login.html')
     else:
-        #如果是新用户需要的检查条件没完成
         contacts = user.get_all_contacts()
         if request.method == 'POST':
             print(request.form)
             person = request.form['chat_friend']
-            if person not in contacts: #创建新的contact功能还没完成
+            if person not in contacts:
                 contacts.append(person)
-                pass
+                user.add_new_contact(contacts)
             history = user.load_contact_history(person)
-            print(history)
             if 'send_message' in request.form:
                 message_input = request.form['send_message']
                 user.store_send_history(person, message_input)
@@ -56,6 +52,7 @@ def chat():
             return render_template('chat.html', contacts=contacts, history=history,selected_radio=person)
         else:
             return render_template('chat.html', contacts=contacts)
+
 
 if __name__ == '__main__':
     #user = User('168.235.86.101','VC1', 'VC') #config user, could change later
